@@ -74,7 +74,13 @@ git clone https://github.com/tu-usuario/lappiz-frontend.git
 cd lappiz-frontend
 ```
 
-3. Instalar dependencias
+3. Crear archivo `.env` en la raíz del proyecto (basarse en el archivo .env.example)
+
+```
+VITE_API_URL=http://localhost:3000/api/v1/
+```
+
+4. Instalar dependencias
 
 ```
 bun install
