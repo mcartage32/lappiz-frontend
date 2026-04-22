@@ -204,3 +204,22 @@ dist/
 - Diseñado para escalar a dashboard completo
 
 ---
+
+## 13. Ejecución con Docker
+
+Para ejecutar la aplicación usando Docker, sigue los siguientes pasos:
+
+### 1) Construir la imagen
+
+```
+docker build -t lappiz-frontend .
+```
+
+### 2) Ejecutar el contenedor
+
+```
+docker run -p 5173:5173 --name lappiz-frontend lappiz-frontend
+```
+
+La froont estará disponible en:
+http://localhost:5173
