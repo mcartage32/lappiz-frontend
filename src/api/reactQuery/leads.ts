@@ -14,7 +14,7 @@ export const useLeadsListQuery = () => {
   })
 }
 
-export const useCreateAppointmentMutation = () => {
+export const useCreateLeadMutation = () => {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: async (payload: ICreateLeadPayload) => {
