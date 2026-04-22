@@ -5,10 +5,13 @@ import { useState } from 'react'
 import { useLeadsListQuery } from '@/api/reactQuery'
 
 const LeadsTable = () => {
-  const { data = [], isLoading } = useLeadsListQuery()
-
   const [currentPage, setCurrentPage] = useState(1)
-  const pageSize = 5
+  const [pageSize, setPageSize] = useState(5)
+
+  const { data, isLoading } = useLeadsListQuery({
+    page: currentPage,
+    limit: pageSize
+  })
 
   const columns: ColumnsType<ILead> = [
     {
@@ -36,18 +39,25 @@ const LeadsTable = () => {
   return (
     <Card title="Lista de Leads" style={{ marginTop: 20 }}>
       <Table
-        dataSource={data}
+        dataSource={data?.data}
         columns={columns}
         rowKey="id"
         loading={isLoading}
+        locale={{ emptyText: 'No hay leads registrados' }}
         pagination={{
           current: currentPage,
           pageSize: pageSize,
-          total: data.length,
+          total: data?.total || 0,
           onChange: (page) => setCurrentPage(page),
-          showSizeChanger: false
+
+          showSizeChanger: true,
+          pageSizeOptions: ['5', '10', '20', '50'],
+
+          onShowSizeChange: (_, size) => {
+            setPageSize(size)
+            setCurrentPage(1)
+          }
         }}
-        locale={{ emptyText: 'No hay leads registrados' }}
       />
     </Card>
   )

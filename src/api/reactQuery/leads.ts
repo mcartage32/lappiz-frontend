@@ -1,13 +1,14 @@
 import { useQuery, keepPreviousData, useMutation, useQueryClient } from '@tanstack/react-query'
 import axiosInstance from '../axiosConfig'
 import ENDPOINTS from '../endpoints'
-import type { ICreateLeadPayload, ILead } from '@/interfaces'
+import type { ICreateLeadPayload, ILeadsQueryParams, ILeadsResponse } from '@/interfaces'
 
-export const useLeadsListQuery = () => {
+export const useLeadsListQuery = (params: ILeadsQueryParams) => {
   return useQuery({
-    queryKey: ['leadsList'],
-    queryFn: async (): Promise<ILead[]> => {
-      const response = await axiosInstance.get<ILead[]>(ENDPOINTS.LEADS)
+    queryKey: ['leadsList', params],
+    queryFn: async (): Promise<ILeadsResponse> => {
+      const response = await axiosInstance.get<ILeadsResponse>(ENDPOINTS.LEADS, { params })
+
       return response.data
     },
     placeholderData: keepPreviousData
