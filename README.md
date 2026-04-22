@@ -37,7 +37,7 @@ src/
 │   ├── axiosConfig.ts      # Instancia de Axios y base URL
 │   └── endpoints.ts        # Constantes con las rutas de la API
 ├── components/
-│   └── NotificationCustom.tsx
+│   └── NotificationCustom.tsx # Aquí reside la lógica del Context de las notificacion + el UI del Toast
 ├── interfaces/
 │   ├── index.ts            # Exportaciones centralizadas
 │   └── leads.ts            # Interfaces para las operaciones con los leads
