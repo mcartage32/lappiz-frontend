@@ -1,73 +1,200 @@
-# React + TypeScript + Vite
+# Lappiz Frontend - UI de Gestión de Leads (React + Vite + Ant Design)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. Descripción General
 
-Currently, two official plugins are available:
+Frontend desarrollado para la gestión de **leads (interesados en demos de la plataforma Lappiz)**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Esta aplicación permite:
 
-## React Compiler
+- Registrar nuevos leads mediante formulario
+- Visualizar leads en una tabla paginada
+- Consumir una API REST desarrollada en NestJS
+- Mostrar notificaciones de éxito y error
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+La interfaz está diseñada con un estilo tipo **SaaS moderno (Lappiz UI)** usando tema oscuro personalizado.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 2. Tecnologías Utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React 18
+- Vite
+- TypeScript
+- Ant Design (UI Library)
+- React Query (TanStack Query)
+- Axios
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 3. Estructura del Proyecto
+
+```
+src/
+├── api/
+│   ├── reactQuery/         # Hooks personalizados (useQuery, useMutation)
+│   │   ├── index.ts        # Exportaciones centralizadas
+│   │   └── leads.ts        # Queries/Mutations específicos de leads
+│   ├── axiosConfig.ts      # Instancia de Axios y base URL
+│   └── endpoints.ts        # Constantes con las rutas de la API
+├── components/
+│   └── NotificationCustom.tsx
+├── interfaces/
+│   ├── index.ts            # Exportaciones centralizadas
+│   └── leads.ts            # Interfaces para las operaciones con los leads
+├── pages/
+│   ├── LeadsForm.tsx
+│   └── LeadsTable.tsx
+├── App.tsx
+├── main.tsx
+└── index.css
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 4. Instalación y Ejecución
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Requisitos previos
+
+- Node.js
+- Bun
+
+---
+
+### Instalación
+
+1. Clonar el repositorio
+
 ```
+git clone https://github.com/tu-usuario/lappiz-frontend.git
+```
+
+2. Ingresar al proyecto
+
+```
+cd lappiz-frontend
+```
+
+3. Instalar dependencias
+
+```
+bun install
+```
+
+---
+
+### Ejecutar en desarrollo
+
+```
+bun run dev
+```
+
+La aplicación estará disponible en:
+
+[http://localhost:5173](http://localhost:5173)
+
+---
+
+## 5. Variables de Entorno
+
+Crear archivo `.env` en la raíz del proyecto:
+
+```
+VITE_API_URL=http://localhost:3000/api/v1
+```
+
+---
+
+## 6. Funcionalidades
+
+### 1. Registro de Leads
+
+Formulario para crear nuevos leads:
+
+- Nombre
+- Correo electrónico
+- Validaciones básicas
+
+### 2. Listado de Leads
+
+Tabla con:
+
+- ID
+- Nombre
+- Email
+- Fecha de creación
+- Paginación dinámica
+
+---
+
+## 7. Comunicación con Backend
+
+El frontend consume una API REST desarrollada en NestJS:
+
+### Endpoints utilizados
+
+#### Obtener leads
+
+```
+GET /leads
+```
+
+#### Crear lead
+
+```
+POST /leads
+```
+
+---
+
+## 8. Estado Global y Fetching
+
+Se utiliza **React Query** para:
+
+- Cache de datos
+- Revalidación automática
+- Manejo de estados de loading y error
+
+---
+
+## 9. UI / Diseño
+
+La interfaz sigue un estilo tipo **https://lappiz.io/**:
+
+- Fondo negro (#000000)
+- Acento rojo (#fe0000)
+- Cards con glow sutil
+- Tabla transparente
+- Estilo enterprise moderno
+
+---
+
+## 10. Notificaciones
+
+Se implementa un sistema de notificaciones personalizado:
+
+- Éxito al crear lead
+- Error en solicitudes
+- Feedback inmediato al usuario
+
+---
+
+## 11. Build para Producción
+
+```
+bun run build
+```
+
+El build será generado en:
+
+```
+dist/
+```
+
+---
+
+## 12. Notas del Proyecto
+
+- Proyecto frontend desacoplado del backend
+- Diseñado para escalar a dashboard completo
+
+---
