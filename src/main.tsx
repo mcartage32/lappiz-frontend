@@ -5,8 +5,8 @@ import { NotificationProvider } from './componets/NotificationCustom.tsx'
 import { ConfigProvider } from 'antd'
 import esES from 'antd/locale/es_ES'
 import dayjs from 'dayjs'
-import 'dayjs/locale/es'
 import App from './App.tsx'
+import 'dayjs/locale/es'
 import './index.css'
 
 dayjs.locale('es')

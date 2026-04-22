@@ -1,4 +1,3 @@
-import './App.css'
 import LeadsForm from './pages/LeadsForm'
 import LeadsTable from './pages/LeadsTable'
 
