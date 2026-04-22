@@ -1,5 +1,5 @@
 import type { ICreateLeadPayload } from '@/interfaces'
-import { Button, Form, Input, Card } from 'antd'
+import { Button, Form, Input } from 'antd'
 import { useCreateLeadMutation } from '@/api/reactQuery'
 import { createNotification } from '@/componets/NotificationCustom'
 
@@ -27,7 +27,8 @@ const LeadsForm = () => {
   }
 
   return (
-    <Card title="Registro de Leads" style={{ maxWidth: 500, margin: '0 auto' }}>
+    <div className="card-form">
+      <h2 className="leads-form-title">Registro de Leads</h2>
       <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item
           label="Nombre"
@@ -54,7 +55,7 @@ const LeadsForm = () => {
           </Button>
         </Form.Item>
       </Form>
-    </Card>
+    </div>
   )
 }
 

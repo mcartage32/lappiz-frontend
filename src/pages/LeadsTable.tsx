@@ -1,6 +1,6 @@
 import type { ColumnsType } from 'antd/es/table'
 import type { ILead } from '@/interfaces'
-import { Table, Card } from 'antd'
+import { Table } from 'antd'
 import { useState } from 'react'
 import { useLeadsListQuery } from '@/api/reactQuery'
 
@@ -37,7 +37,8 @@ const LeadsTable = () => {
   ]
 
   return (
-    <Card title="Lista de Leads" style={{ marginTop: 20 }}>
+    <div className="card-table">
+      <h2 className="leads-form-title">Listado de Leads</h2>
       <Table
         dataSource={data?.data}
         columns={columns}
@@ -49,17 +50,16 @@ const LeadsTable = () => {
           pageSize: pageSize,
           total: data?.total || 0,
           onChange: (page) => setCurrentPage(page),
-
           showSizeChanger: true,
           pageSizeOptions: ['5', '10', '20', '50'],
-
           onShowSizeChange: (_, size) => {
             setPageSize(size)
             setCurrentPage(1)
           }
         }}
+        scroll={{ x: 300 }}
       />
-    </Card>
+    </div>
   )
 }
 

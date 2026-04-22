@@ -1,109 +1,247 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  --bg: #000000;
+  --card: #0a0a0a;
+  --text: #d1d5db;
+  --text-h: #ffffff;
+  --primary: #fe0000;
+  --muted: #9ca3af;
+  --border: rgba(255, 255, 255, 0.521);
+  --radius: 16px;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  font-family: system-ui, Inter, sans-serif;
 }
 
 body {
   margin: 0;
+  background-image: url('https://lappiz.io/wp-content/uploads/2026/03/Azul-Moderno-Startup-Tecnologica-Presentacion-scaled.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text);
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.hero {
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  background: #fe0000;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/*--------------------- Card Styles------------------------------ */
+
+.card-form {
+  background: linear-gradient(180deg, #0a0a0a, #050505);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 24px 24px 24px;
+  box-shadow: var(--shadow);
+  transition: 0.3s ease;
+  width: 35%;
+  box-sizing: border-box;
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.08),
+    0 10px 40px rgb(53, 53, 53);
+  min-width: 280px;
+  margin-left: 32.5%;
+}
+
+.card-form:hover {
+  border-color: rgba(254, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 35px rgba(255, 255, 255, 0.08),
+    0 15px 50px rgba(0, 0, 0, 0.7);
+}
+
+.card-table {
+  background: linear-gradient(180deg, #0a0a0a, #050505);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 24px 24px 24px;
+  box-shadow: var(--shadow);
+  transition: 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.08),
+    0 10px 40px rgb(53, 53, 53);
+  min-width: 280px;
+}
+
+.card-table:hover {
+  border-color: rgba(254, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 35px rgba(255, 255, 255, 0.08),
+    0 15px 50px rgba(0, 0, 0, 0.7);
+}
+
+.leads-form-title {
+  font-size: 20px;
+  font-weight: 600;
   color: var(--text-h);
+  margin-bottom: 16px;
+  text-align: center;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+.ant-form-item-label > label {
+  color: var(--text) !important;
+}
+
+.ant-input {
+  background: #ffffff !important;
+  border: 1px solid var(--border) !important;
+  color: black !important;
+}
+
+.ant-input:focus,
+.ant-input-focused {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(254, 0, 0, 0.2) !important;
+}
+
+.ant-btn-primary {
+  background: var(--primary) !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(254, 0, 0, 0.25);
+}
+
+.ant-btn-primary:hover {
+  background: #ff1a1a !important;
+  box-shadow: 0 0 20px rgba(254, 0, 0, 0.4);
+}
+/*--------------------- Table Styles------------------------------ */
+.ant-table {
+  background: transparent !important;
+  color: var(--text);
+}
+
+.ant-table-thead > tr > th {
+  background: #0a0a0a !important;
+  color: var(--text-h) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.ant-table-tbody > tr > td {
+  background: transparent !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--text);
+}
+
+.ant-pagination {
+  color: var(--text);
+}
+
+.ant-pagination .ant-pagination-item-link {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-radius: 8px;
+}
+
+.ant-pagination .ant-pagination-item-link:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(254, 0, 0, 0.4) !important;
+  color: #ffffff !important;
+}
+
+.ant-pagination .ant-pagination-item-active {
+  border-color: var(--primary) !important;
+  background: rgba(254, 0, 0, 0.1) !important;
+}
+
+.ant-pagination .ant-pagination-item a {
+  color: var(--text) !important;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: #fe0000 !important;
+  font-weight: 600;
+}
+
+.ant-pagination .ant-pagination-item {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 8px;
+  transition: 0.2s ease;
+  color: whitesmoke !important;
+}
+
+/*Media responsive*/
+@media (min-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .card-form {
+    width: 40%;
+    margin-left: 30%;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+@media (min-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    padding: 0 40px;
+  }
+
+  .hero h1 {
+    font-size: 56px;
   }
 }
-p {
-  margin: 0;
-}
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+@media (max-width: 767px) {
+  .app-container {
+    padding: 16px 12px;
+  }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  .hero {
+    padding: 24px 10px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .content {
+    gap: 16px;
+  }
+
+  .card-form {
+    width: 100%;
+    margin-left: 0;
+  }
 }
